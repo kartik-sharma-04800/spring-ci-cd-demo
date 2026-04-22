@@ -46,8 +46,8 @@ jobs:
           script: |
             sudo docker stop spring-demo || true
             sudo docker rm spring-demo || true 
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
-            sudo docker run -d --name spring-demo -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME  }}/spring-boot-ci-demo:latest
+            sudo docker run -d --name spring-demo -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME  }}/spring-boot-ci-demo:latest
             
             
           
