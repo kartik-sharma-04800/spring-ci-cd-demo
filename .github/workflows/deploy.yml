@@ -31,17 +31,17 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build docker iamge
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest .
+      run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ci-demo:latest .
     
     - name: Push Immage to Docker Hub 
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/spring-boot-ci-demo:latest
 
     - name: SSH and deploy to EC2
       uses: appleboy/ssh-action@v1
       with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          password: ${{ secrets.EC2_PASSWORD }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           port: ${{ secrets.PORT }}
           script: |
             docker stop spring-demo || true
