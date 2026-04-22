@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build docker iamge
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest .
     
     - name: Push Immage to Docker Hub 
       run: docker push ${{ secrets.DOCKER_USERNAME }}/spring-boot-ci-demo:latest
